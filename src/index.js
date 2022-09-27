@@ -1,22 +1,60 @@
-// ./src/index.js
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, NavLink, Switch } from "react-router-dom";
 
-function Home() {
+const linkStyles = {
+  display: "inline-block",
+  width: "50px",
+  padding: "12px",
+  margin: "0 6px 6px",
+  background: "blue",
+  textDecoration: "none",
+  color: "white",
+};
+
+function NavBar() {
   return (
     <div>
-      <h1>Home!</h1>
+      <NavLink
+        to="/"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "darkblue",
+        }}
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to="/about"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "darkblue",
+        }}
+      >
+        About
+      </NavLink>
+      <NavLink
+        to="/login"
+        exact
+        style={linkStyles}
+        activeStyle={{
+          background: "darkblue",
+        }}
+      >
+        Login
+      </NavLink>
     </div>
   );
 }
 
+function Home() {
+  return <h1>Home!</h1>;
+}
+
 function About() {
-  return (
-    <div>
-      <h1>This is my about component!</h1>
-    </div>
-  );
+  return <h1>This is my about component!</h1>;
 }
 
 function Login() {
@@ -36,14 +74,14 @@ function Login() {
   );
 }
 
-
 ReactDOM.render(
   <BrowserRouter>
+    <NavBar /> 
     <Switch>
-      <Route path="/about">
+      <Route exact path="/about">
         <About />
       </Route>
-      <Route path="/login">
+      <Route exact path="/login">
         <Login />
       </Route>
       <Route exact path="/">
@@ -51,5 +89,5 @@ ReactDOM.render(
       </Route>
     </Switch>
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
