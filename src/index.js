@@ -1,7 +1,7 @@
 // ./src/index.js
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 function Home() {
   return (
@@ -39,15 +39,17 @@ function Login() {
 
 ReactDOM.render(
   <BrowserRouter>
-    <Route path="/">
-      <Home />
-    </Route>
-    <Route path="/about">
-      <About />
-    </Route>
-    <Route path="/login">
-      <Login />
-    </Route>
+    <Switch>
+      <Route path="/about">
+        <About />
+      </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
+      <Route path="/">
+        <Home />
+      </Route>
+    </Switch>
   </BrowserRouter>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
